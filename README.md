@@ -2,7 +2,7 @@
 
 ## _Deep diving into JOINs in SQL_
 
-Resume: Today you will see how to get needed data based on different structures JOINs
+Resume: Today you will see how to get needed data based on different structures JOINs.
 
 ## Contents
 
@@ -41,24 +41,24 @@ Resume: Today you will see how to get needed data based on different structures 
 
 ![D02_01](misc/images/D02_01.png)
 
-In the picture, you can see a Relational Expression in Tree View. This expression corresponds the next SQL query 
+The image shows a Relational Expression in Tree View. This expression corresponds to the following SQL query:
 
     SELECT *
         FROM R CROSS JOIN S
     WHERE clause
 
-So, in other words we can describe any SQL in mathematical terms of Relational Algebra.
+In other words, we can describe any SQL in the mathematical language of Relational Algebra.
 
-The main question (which I hear from my students) is why do we need to learn Relational Algebra in a course, if we can write a SQL in a first attempt? My answer is yes and no in one time. “Yes” means you can write a SQL from the first attempt, that’s right , “No” means you have to know the main aspects of Relational Algebra, because this knowledge is in use for optimization plans and for semantic queries. 
-Which type of joins are existing in Relational Algebra?
-Actually, “Cross Join” is a primitive operator and it is an ancestor for other types of joins.
-- Natural Join
-- Theta Join
-- Semi Join
-- Anti Join
-- Left / Right / Full Joins 
+The main question (that we hear from our students) is why do we need to learn Relational Algebra in a course if we can write a SQL in the first attempt? My answer is yes and no at the same time. "Yes" means that you can write a SQL from the first attempt, that's right, "No" means that you need to know the main aspects of Relational Algebra, because this knowledge is used for optimization plans and for semantic queries. 
+What kind of joins exist in Relational Algebra?
+Actually, "Cross Join" is a primitive operator and it is an ancestor for other types of joins.
+- Natural Join,
+- Theta Join,
+- Semi Join,
+- Anti Join,
+- Left/Right/Full Joins. 
 
-But what does a join operation between 2 tables mean? Let me present a part of pseudo code, how join operation works without indexing. 
+But what is a join operation between 2 tables? Let me present a part of pseudo code how join operation works without indexing.
 
     FOR r in R LOOP
         FOR s in S LOOP
@@ -75,24 +75,24 @@ It’s just a set of loops ... Not magic at all
 ## Chapter II
 ## General Rules
 
-- Use this page as the only reference. Do not listen to any rumors and speculations on how to prepare your solution.
-- Please make sure you are using the latest version of PostgreSQL.
-- That is completely OK if you are using IDE to write a source code (aka SQL script).
-- To be assessed your solution must be in your GIT repository.
-- Your solutions will be evaluated by your piscine mates.
-- You should not leave in your directory any other file than those explicitly specified by the exercise instructions. It is recommended that you modify your `.gitignore` to avoid accidents.
-- Do you have a question? Ask your neighbor on the right. Otherwise, try with your neighbor on the left.
+- Use this page as your only reference. Do not listen to rumors and speculations about how to prepare your solution.
+- Make sure you are using the latest version of PostgreSQL.
+- It is perfectly fine if you use the IDE to write source code (aka SQL script).
+- To be evaluated, your solution must be in your GIT repository.
+- Your solutions will be evaluated by your peers.
+- You should not leave any files in your directory other than those explicitly specified by the exercise instructions. It is recommended that you modify your `.gitignore` to avoid accidents.
+- Got a question? Ask your neighbor to the right. Otherwise, try your neighbor on the left.
 - Your reference manual: mates / Internet / Google. 
-- Read the examples carefully. They may require things that are not otherwise specified in the subject.
+- Read the examples carefully. You may need things not specified in the topic.
 - And may the SQL-Force be with you!
-- Absolutely everything can be presented in SQL! Let’s start and have fun!
+Absolutely anything can be represented in SQL! Let's get started and have fun!
 
 ## Chapter III
 ## Rules of the day
 
 - Please make sure you have an own database and access for it on your PostgreSQL cluster. 
 - Please download a [script](materials/model.sql) with Database Model here and apply the script to your database (you can use command line with psql or just run it through any IDE, for example DataGrip from JetBrains or pgAdmin from PostgreSQL community). 
-- All tasks contain a list of Allowed and Denied sections with listed database options, database types, SQL constructions etc. Please have a look at the section before you start.
+- All tasks contain a list of Allowed and Denied sections with listed database options, database types, SQL constructions etc. Please have a look at that section before you start.
 - Please take a look at the Logical View of our Database Model. 
 
 ![schema](misc/images/schema.png)
@@ -124,7 +124,7 @@ It’s just a set of loops ... Not magic at all
 - field menu_id - foreign key to menu
 - field order_date - date (for example 2022-01-01) of person order 
 
-Persons' visit and persons' order are different entities and don't contain any correlation between data. For example, a client can be in one restraunt (just looking at menu) and in this time make an order in different one by phone or by mobile application. Or another case,  just be at home and again make a call with order without any visits.
+People's visit and people's order are different entities and don't contain any correlation between data. For example, a customer can be in a restaurant (just looking at the menu) and in that time place an order in another restaurant by phone or mobile application. Or another case, just be at home and again make a call with order without any visits.
 
 ## Chapter IV
 ## Exercise 00 - Move to the LEFT, move to the RIGHT
@@ -138,7 +138,7 @@ Persons' visit and persons' order are different entities and don't contain any c
 | **Denied**                               |                                                                                                                          |
 | SQL Syntax Construction                        | `NOT IN`, `IN`, `NOT EXISTS`, `EXISTS`, `UNION`, `EXCEPT`, `INTERSECT`                                                                                              |
 
-Please write a SQL statement which returns a list of pizzerias names with corresponding rating value which have not been visited by persons. 
+Write a SQL statement that returns a list of pizzerias with the corresponding rating value that have not been visited by people.
 
 
 ## Chapter V
@@ -154,7 +154,7 @@ Please write a SQL statement which returns a list of pizzerias names with corres
 | **Denied**                               |                                                                                                                          |
 | SQL Syntax Construction                        | `NOT IN`, `IN`, `NOT EXISTS`, `EXISTS`, `UNION`, `EXCEPT`, `INTERSECT`                                                                                              |
 
-Please write a SQL statement which returns the missing days from 1st to 10th of January 2022 (including all days) for visits  of persons with identifiers 1 or 2 (it means days missed by both). Please order by visiting days in ascending mode. The sample of data with column name is presented below.
+Please write a SQL statement that returns the missing days from January 1 through January 10, 2022 (including all days) for visits by people with identifiers 1 or 2 (i.e., days missed by both). Please order by visit days in ascending mode. The sample data with column names is shown below.
 
 | missing_date |
 | ------ |
@@ -176,7 +176,7 @@ Please write a SQL statement which returns the missing days from 1st to 10th of 
 | **Denied**                               |                                                                                                                          |
 | SQL Syntax Construction                        | `NOT IN`, `IN`, `NOT EXISTS`, `EXISTS`, `UNION`, `EXCEPT`, `INTERSECT`                                                                                              |
 
-Please write a SQL statement that returns a whole list of person names visited (or not visited) pizzerias during the period from 1st to 3rd of January 2022 from one side and the whole list of pizzeria names which have been visited (or not visited) from the other side. The data sample with needed column names is presented below. Please pay attention to the substitution value ‘-’ for `NULL` values in `person_name` and `pizzeria_name` columns. Please also add ordering for all 3 columns.
+Please write an SQL statement that will return the entire list of names of people who visited (or did not visit) pizzerias during the period from January 1 to January 3, 2022 on one side and the entire list of names of pizzerias that were visited (or did not visit) on the other side. The data sample with the required column names is shown below. Please note the replacement value '-' for `NULL` values in the columns `person_name` and `pizzeria_name`. Please also add the order for all 3 columns.
 
 | person_name | visit_date | pizzeria_name |
 | ------ | ------ | ------ |
@@ -202,7 +202,7 @@ Please write a SQL statement that returns a whole list of person names visited (
 | **Denied**                               |                                                                                                                          |
 | SQL Syntax Construction                        | `NOT IN`, `IN`, `NOT EXISTS`, `EXISTS`, `UNION`, `EXCEPT`, `INTERSECT`                                                                                              |
 
-Let’s return back to Exercise #01, please rewrite your SQL by using the CTE (Common Table Expression) pattern. Please move into the CTE part of your "day generator". The result should be similar like in Exercise #01
+Let's go back to Exercise #01, please rewrite your SQL using the CTE (Common Table Expression) pattern. Please go to the CTE part of your "day generator". The result should look similar to Exercise #01.
 
 | missing_date | 
 | ------ | 
@@ -222,7 +222,7 @@ Let’s return back to Exercise #01, please rewrite your SQL by using the CTE (C
 | **Allowed**                               |                                                                                                                          |
 | Language                        | ANSI SQL                                                                                              |
 
-Find full information about all possible pizzeria names and prices to get mushroom or pepperoni pizzas. Please sort the result by pizza name and pizzeria name then. The result of sample data is below (please use the same column names in your SQL statement).
+Find complete information about all possible pizzeria names and prices to get mushroom or pepperoni pizza. Then sort the result by pizza name and pizzeria name. The result of the sample data is shown below (please use the same column names in your SQL statement).
 
 | pizza_name | pizzeria_name | price |
 | ------ | ------ | ------ |
@@ -242,7 +242,7 @@ Find full information about all possible pizzeria names and prices to get mushro
 | **Allowed**                               |                                                                                                                          |
 | Language                        | ANSI SQL                                                                                              |
 
-Find names of all female persons older than 25 and order the result by name. The sample of output is presented below.
+Find the names of all females over the age of 25 and sort the result by name. The sample output is shown below.
 
 | name | 
 | ------ | 
@@ -262,7 +262,7 @@ Find names of all female persons older than 25 and order the result by name. The
 | **Allowed**                               |                                                                                                                          |
 | Language                        | ANSI SQL                                                                                              |
 
-Please find all pizza names (and corresponding pizzeria names using `menu` table) that Denis or Anna ordered. Sort a result by both columns. The sample of output is presented below.
+Find all pizza names (and corresponding pizzeria names using the `menu` table) ordered by Denis or Anna. Sort a result by both columns. The sample output is shown below.
 
 | pizza_name | pizzeria_name |
 | ------ | ------ |
@@ -281,7 +281,7 @@ Please find all pizza names (and corresponding pizzeria names using `menu` table
 | **Allowed**                               |                                                                                                                          |
 | Language                        | ANSI SQL                                                                                              |
 
-Please find the name of pizzeria Dmitriy visited on January 8, 2022 and could eat pizza for less than 800 rubles.
+Please find the name of the pizzeria Dmitriy visited on January 8, 2022 and could eat pizza for less than 800 rubles.
 
 ## Chapter XII
 ## Exercise 08 - Continuing to research data
@@ -295,7 +295,7 @@ Please find the name of pizzeria Dmitriy visited on January 8, 2022 and could ea
 | Language                        | ANSI SQL                                                                                              |           
 
 
-Please find the names of all males from Moscow or Samara cities who orders either pepperoni or mushroom pizzas (or both) . Please order the result by person name in descending mode. The sample of output is presented below.
+Please find the names of all men from Moscow or Samara who order either pepperoni or mushroom pizza (or both). Please sort the result by person names in descending order. The sample output is shown below.
 
 | name | 
 | ------ | 
@@ -314,7 +314,7 @@ Please find the names of all males from Moscow or Samara cities who orders eithe
 | **Allowed**                               |                                                                                                                          |
 | Language                        | ANSI SQL                                                                                              |
 
-Please find the names of all females who ordered both pepperoni and cheese pizzas (at any time and in any pizzerias). Make sure that the result is ordered by person name. The sample of data is presented below.
+Find the names of all women who ordered both pepperoni and cheese pizzas (at any time and in any pizzerias). Make sure that the result is ordered by person's name. The sample data is shown below.
 
 | name | 
 | ------ | 
@@ -333,7 +333,7 @@ Please find the names of all females who ordered both pepperoni and cheese pizza
 | **Allowed**                               |                                                                                                                          |
 | Language                        | ANSI SQL                                                                                              |
 
-Please find the names of persons who live on the same address. Make sure that the result is ordered by 1st person, 2nd person's name and common address. The  data sample is presented below. Please make sure your column names are corresponding column names below.
+Find the names of people who live at the same address. Make sure the result is sorted by 1st person's name, 2nd person's name, and shared address. The data sample is shown below. Make sure your column names match the column names below.
 
 | person_name1 | person_name2 | common_address | 
 | ------ | ------ | ------ |
